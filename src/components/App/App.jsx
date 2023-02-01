@@ -1,39 +1,50 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { useAuth } from 'hooks';
+import { refreshUser } from 'redux/auth/operations';
+import { RestrictedRoute } from 'components/RestrictedRoute/RestrictedRoute';
+import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 
-import { Box } from 'components/Box/Box';
-import { Section } from 'components/Section/Section';
-import { PhonebookForm } from 'components/PhonebookForm/PhonebookForm';
-import { ContactsList } from 'components/ContactsList/ContactsList';
-import { FilterContacts } from 'components/FilterContacts/FilterContacts';
-import { Notification } from 'components/ContactsList/ContactsList.styled';
+const HomePage = lazy(() => import('../../page/Home'));
+const RegisterPage = lazy(() => import('../../page/Register'));
+const LoginPage = lazy(() => import('../../page/Login'));
+const ContactsPage = lazy(() => import('../../page/Contacts'));
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <Box as={'main'}>
-      <Section title="Phonebook">
-        <PhonebookForm />
-      </Section>
-
-      <Section title="Contacts">
-        {contacts.length > 1 && <FilterContacts />}
-
-        {isLoading && !error && (
-          <Notification>Request on progress...</Notification>
-        )}
-        <ContactsList />
-      </Section>
-    </Box>
+  return isRefreshing ? (
+    <div>Fetching...</div>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute component={RegisterPage} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute component={ContactsPage} redirectTo="/login" />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };

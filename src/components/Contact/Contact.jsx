@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import {
   ContactsItem,
   ContactsName,
