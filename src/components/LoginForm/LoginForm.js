@@ -20,22 +20,11 @@ export const LoginForm = () => {
     <form action="submit" onSubmit={handleSubmit}>
       <label htmlFor="email">
         Email
-        <input
-          type="email"
-          name="email"
-          placeholder="mango@mail.com"
-          title="Email may contain only letters and end in @yourmail.com. For example mango@mail.com, polly@gmail.com"
-          required
-        />
+        <input type="email" name="email" />
       </label>
       <label htmlFor="password">
         Password
-        <input
-          type="password"
-          name="password"
-          title="Password shoul contain letters and numbers."
-          required
-        />
+        <input type="password" name="password" />
       </label>
       <button type="submit" aria-label="log in">
         Log In
