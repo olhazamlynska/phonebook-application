@@ -5,7 +5,7 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e);
+
     const form = e.currentTarget;
     dispatch(
       logIn({

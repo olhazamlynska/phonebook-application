@@ -20,7 +20,7 @@ export const Contact = ({ contact }) => {
   return (
     <ContactsItem>
       <ContactsName>{contact.name}:</ContactsName>
-      <ContactsPhone>{contact.phone}</ContactsPhone>
+      <ContactsPhone>{contact.number}</ContactsPhone>
       <DeleteBtn onClick={handleDelete} aria-label="delete">
         Delete
       </DeleteBtn>

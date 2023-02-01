@@ -8,7 +8,7 @@ export const RegisterForm = () => {
     e.preventDefault();
 
     const form = e.currentTarget;
-    console.log(form);
+
     dispatch(
       register({
         name: form.elements.name.value,
@@ -20,7 +20,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form action="submit" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="name">
         Username
         <input type="text" name="name" />

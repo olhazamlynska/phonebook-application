@@ -18,6 +18,7 @@ export const ContactsList = () => {
       {contacts.length === 0 && !isLoading && (
         <Notification>Sorry,there no contact!</Notification>
       )}
+
       <ContactsListSTyle>
         {contacts.map(contact => {
           return <Contact key={contact.id} id={contact.id} contact={contact} />;

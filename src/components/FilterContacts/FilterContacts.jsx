@@ -7,7 +7,7 @@ import {
 } from 'components/FilterContacts/FilterContacts.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilterContacts } from 'redux/filtersSlice';
-import { selectFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/contacts/selectors';
 
 export const FilterContacts = () => {
   const filterId = nanoid();

@@ -9,11 +9,11 @@ import {
   Input,
   AddBtn,
 } from 'components/PhonebookForm/PhonebookForm.styled';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 
 export function PhonebookForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -24,8 +24,8 @@ export function PhonebookForm() {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
       default:
         Notify.failure('Try again!');
@@ -38,23 +38,23 @@ export function PhonebookForm() {
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
-    const isAddedNunber = contacts.some(contact => contact.phone === phone);
+    const isAddedNunber = contacts.some(contact => contact.number === number);
 
     if (isAddedName) {
       Notify.failure(`We have already had contact with name ${name}`);
       return false;
     } else if (isAddedNunber) {
-      Notify.failure(`We have already had contact with number ${phone}`);
+      Notify.failure(`We have already had contact with number ${number}`);
       return false;
     }
 
-    dispatch(addContact({ name, phone }))
+    dispatch(addContact({ name, number }))
       .unwrap()
       .then(() => Notify.success('You add contact!'))
       .catch(() => Notify.failure('Something went wrong...Try again!'));
 
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -76,8 +76,8 @@ export function PhonebookForm() {
         Number
         <Input
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           placeholder="111-11-11"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
