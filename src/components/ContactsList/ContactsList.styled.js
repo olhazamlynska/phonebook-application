@@ -9,5 +9,6 @@ export const ContactsListSTyle = styled.ul`
 `;
 
 export const Notification = styled.p`
+  text-align: center;
   color: ${p => p.theme.colors.accentColor};
 `;

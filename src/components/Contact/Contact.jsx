@@ -1,6 +1,7 @@
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
+
 import {
   ContactsItem,
   ContactsName,
@@ -18,12 +19,15 @@ export const Contact = ({ contact }) => {
       .catch(() => Notify.failure('Something went wrong...Try again!'));
   };
   return (
-    <ContactsItem>
-      <ContactsName>{contact.name}:</ContactsName>
-      <ContactsPhone>{contact.number}</ContactsPhone>
-      <DeleteBtn onClick={handleDelete} aria-label="delete">
-        Delete
-      </DeleteBtn>
-    </ContactsItem>
+    <>
+      <ContactsItem>
+        <ContactsName>{contact.name}:</ContactsName>
+        <ContactsPhone>{contact.number} </ContactsPhone>
+
+        <DeleteBtn onClick={handleDelete} aria-label="delete">
+          Delete
+        </DeleteBtn>
+      </ContactsItem>
+    </>
   );
 };

@@ -1,5 +1,6 @@
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { FilterContacts } from 'components/FilterContacts/FilterContacts';
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -8,6 +9,8 @@ import {
   selectContacts,
   selectError,
 } from 'redux/contacts/selectors';
+import { Notification } from 'components/ContactsList/ContactsList.styled';
+import { Box } from 'components/Box/Box';
 
 const { Helmet } = require('react-helmet');
 
@@ -27,9 +30,13 @@ const Contacts = () => {
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
-      {contacts.length > 1 && <FilterContacts />}
-      {isLoading && !error && <p>Request on progress...</p>}
-      <ContactsList />
+      <Box>
+        {contacts.length > 1 && <FilterContacts />}
+        {isLoading && !error && (
+          <Notification>Request on progress...</Notification>
+        )}
+        <ContactsList />
+      </Box>
     </>
   );
 };

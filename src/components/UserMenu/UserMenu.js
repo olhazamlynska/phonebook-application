@@ -2,30 +2,38 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { logOut } from 'redux/auth/operations';
-import { Modal } from 'components/Modal/Modal';
+import { AddModal } from 'components/AddModal/AddModal';
+import { Btn, UserName, Wrapper, OutlinedName } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  const [showModal, setShowModal] = useState(false);
+  const [isShownModal, setIsShownModal] = useState(false);
 
-  const toogleModal = () => {
-    setShowModal(prevState => !prevState);
+  const openModal = () => {
+    setIsShownModal(true);
   };
+
+  const closeModal = () => {
+    setIsShownModal(false);
+  };
+
   const handleLogout = () => {
     dispatch(logOut());
   };
 
   return (
     <>
-      <button onClick={toogleModal}>Add contact</button>
-      {showModal && <Modal onClose={toogleModal}></Modal>}
-      <div>
-        <p>Welcome, {user.name}</p>
-        <button type="button" onClick={handleLogout}>
+      <Btn onClick={openModal}>Add contact</Btn>
+      {isShownModal && <AddModal closeModal={closeModal}></AddModal>}
+      <Wrapper>
+        <UserName>
+          Welcome,<OutlinedName>{user.name}</OutlinedName>!
+        </UserName>
+        <Btn type="button" onClick={handleLogout}>
           Log Out
-        </button>
-      </div>
+        </Btn>
+      </Wrapper>
     </>
   );
 };
