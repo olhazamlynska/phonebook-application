@@ -44,7 +44,7 @@ export const logIn = createAsyncThunk(
 //   POST  /users/logout
 //Authorization *string(header)
 
-export const logOut = createAsyncThunk('auth/login', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     clearAuthHeader();
@@ -68,7 +68,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const response = await axios('​/users​/current');
+      const response = await axios.get('/users/current');
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
