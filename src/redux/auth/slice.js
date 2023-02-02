@@ -16,6 +16,7 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+
     [logIn.pending](state) {
       state.isLoggedIn = false;
     },

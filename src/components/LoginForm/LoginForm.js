@@ -3,6 +3,7 @@ import { logIn } from 'redux/auth/operations';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -13,6 +14,7 @@ export const LoginForm = () => {
         password: form.elements.password.value,
       })
     );
+
     form.reset();
   };
 

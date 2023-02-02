@@ -15,6 +15,7 @@ const ContactsPage = lazy(() => import('../../page/Contacts'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -28,19 +29,22 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute component={RegisterPage} redirectTo="/contacts" />
+            <RestrictedRoute
+              component={RegisterPage}
+              redirectTo={'/contacts'}
+            />
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
+            <RestrictedRoute component={LoginPage} redirectTo={'/contacts'} />
           }
         />
         <Route
           path="/contacts"
           element={
-            <PrivateRoute component={ContactsPage} redirectTo="/login" />
+            <PrivateRoute component={ContactsPage} redirectTo={'/login'} />
           }
         />
       </Route>
