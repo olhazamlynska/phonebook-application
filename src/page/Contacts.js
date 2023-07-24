@@ -1,6 +1,3 @@
-import { ContactsList } from 'components/ContactsList/ContactsList';
-import { FilterContacts } from 'components/FilterContacts/FilterContacts';
-
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -9,8 +6,11 @@ import {
   selectContacts,
   selectError,
 } from 'redux/contacts/selectors';
+import ContactsList from 'components/ContactsList/';
+import FilterContacts from 'components/FilterContacts/';
+import Box from 'components/Box';
+
 import { Notification } from 'components/ContactsList/ContactsList.styled';
-import { Box } from 'components/Box/Box';
 
 const { Helmet } = require('react-helmet');
 

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { logOut } from 'redux/auth/operations';
-import { AddModal } from 'components/AddModal/AddModal';
+import AddModal from 'components/AddModal';
 import { Btn, UserName, Wrapper, OutlinedName } from './UserMenu.styled';
 
-export const UserMenu = () => {
+const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const [isShownModal, setIsShownModal] = useState(false);
@@ -37,3 +37,4 @@ export const UserMenu = () => {
     </>
   );
 };
+export default UserMenu;

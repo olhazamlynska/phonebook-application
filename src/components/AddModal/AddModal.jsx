@@ -16,7 +16,7 @@ import { selectContacts } from 'redux/contacts/selectors';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export function AddModal({ closeModal }) {
+function AddModal({ closeModal }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
@@ -124,6 +124,7 @@ export function AddModal({ closeModal }) {
     modalRoot
   );
 }
+export default AddModal;
 
 AddModal.propTypes = {
   closeModal: PropTypes.func.isRequired,

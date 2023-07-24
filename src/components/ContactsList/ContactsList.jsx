@@ -3,13 +3,13 @@ import {
   selectIsLoading,
   selectVisibleContacts,
 } from 'redux/contacts/selectors';
-import { Contact } from 'components/Contact/Contact';
+import Contact from 'components/Contact';
 import {
   ContactsListSTyle,
   Notification,
 } from 'components/ContactsList/ContactsList.styled';
 
-export const ContactsList = () => {
+const ContactsList = () => {
   const contacts = useSelector(selectVisibleContacts);
   const isLoading = useSelector(selectIsLoading);
 
@@ -27,3 +27,4 @@ export const ContactsList = () => {
     </>
   );
 };
+export default ContactsList;

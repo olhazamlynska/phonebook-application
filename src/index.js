@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'constants/theme';
-import { GlobalStyle } from 'components/GlobalStyle/GlobalStyle';
-import { App } from 'components/App/App';
+import GlobalStyle from 'components/GlobalStyle/';
+import App from 'components/App';
 import { Provider } from 'react-redux';
 import { persistor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';

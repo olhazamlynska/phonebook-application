@@ -1,4 +1,5 @@
 import { Notify } from 'notiflix';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 
@@ -9,7 +10,7 @@ import {
   DeleteBtn,
 } from 'components/Contact/Contact.styled';
 
-export const Contact = ({ contact }) => {
+const Contact = ({ contact }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -30,4 +31,14 @@ export const Contact = ({ contact }) => {
       </ContactsItem>
     </>
   );
+};
+
+export default Contact;
+
+Contact.propTypes = {
+  contact: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.number,
+    number: PropTypes.number,
+  }),
 };

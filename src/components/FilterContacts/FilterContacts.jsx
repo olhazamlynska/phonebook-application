@@ -1,15 +1,14 @@
 import { nanoid } from 'nanoid';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilterContacts } from 'redux/filtersSlice';
+import { selectFilter } from 'redux/contacts/selectors';
 import {
   Label,
   Input,
   Wrapper,
 } from 'components/FilterContacts/FilterContacts.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilterContacts } from 'redux/filtersSlice';
-import { selectFilter } from 'redux/contacts/selectors';
 
-export const FilterContacts = () => {
+const FilterContacts = () => {
   const filterId = nanoid();
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
@@ -28,3 +27,4 @@ export const FilterContacts = () => {
     </Wrapper>
   );
 };
+export default FilterContacts;
