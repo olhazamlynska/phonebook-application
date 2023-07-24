@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkphonebook_application=self.webpackChunkphonebook_application||[]).push([[513],{9513:function(n,e,o){o.r(e),o.d(e,{default:function(){return t}});var c=o(184);function t(){return(0,c.jsx)("div",{children:(0,c.jsx)("h1",{children:"Welcome to contact maneger page!"})})}}}]);
+//# sourceMappingURL=513.3b5697de.chunk.js.map
